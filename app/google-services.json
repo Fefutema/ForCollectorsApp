@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "595473503881",
+    "firebase_url": "https://forcollectors-futema.firebaseio.com",
+    "project_id": "forcollectors-futema",
+    "storage_bucket": "forcollectors-futema.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:595473503881:android:fbd64552a55dd516",
+        "android_client_info": {
+          "package_name": "br.com.futema.forcollectors"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "595473503881-9vfejo5j6a1dm3sb1af37889tt1n79uu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.futema.forcollectors",
+            "certificate_hash": "1d667b93e0028e526d841840ba77624091aaf68f"
+          }
+        },
+        {
+          "client_id": "595473503881-ro6hnfg0gjb968mam1caj1pcp4iq75p8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCr_zHp35Dao5Mqr7Pv8ciakifQt4B4t8w"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "595473503881-ro6hnfg0gjb968mam1caj1pcp4iq75p8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
