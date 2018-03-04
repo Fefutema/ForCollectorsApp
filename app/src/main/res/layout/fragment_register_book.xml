@@ -1,0 +1,63 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="br.com.futema.forcollectors.fragment.RegisterBookFragment">
+
+    <LinearLayout
+        android:id="@+id/containterForm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/etTitulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Titulo do Livro" />
+
+        <EditText
+            android:id="@+id/etAutor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nome do autor" />
+
+        <EditText
+            android:id="@+id/etDescricao"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:gravity="top"
+            android:hint="Descrição ..." />
+
+
+        <CheckBox
+            android:id="@+id/chkLido"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/lido" />
+
+        <CheckBox
+            android:id="@+id/chkQuero"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/quero_este_livro" />
+
+        <CheckBox
+            android:id="@+id/chkFavorito"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/livro_favorito" />
+
+        <Button
+                android:id="@+id/btnSalvar"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dip"
+                android:background="@color/colorAccent"
+                android:text="@string/salvarLivro"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
+</FrameLayout>

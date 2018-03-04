@@ -28,4 +28,11 @@
     <string name="lbl_forgot_password">Esqueceu a senha?</string>
     <string name="forgot_password_msg">Informe seu email para enviarmos as intruções para resetar a senha.</string>
     <string name="title_logout">Logout</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="salvarLivro">Salvar</string>
+    <string name="lido">Lido</string>
+    <string name="quero_este_livro">Quero este livro</string>
+    <string name="livro_favorito">É um dos seus livros favoritos.</string>
 </resources>
