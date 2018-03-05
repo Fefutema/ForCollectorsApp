@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
                     changeFragment(new ListFragment());
                     return true;
                 case R.id.navigation_dashboard:
-                    changeFragment(new RegisterBookFragment());
+                    //changeFragment(new RegisterBookFragment());
                     return true;
                 case R.id.logout:
                     deslogar();
