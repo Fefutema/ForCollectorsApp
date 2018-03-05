@@ -42,9 +42,6 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.navigation_home:
                     changeFragment(new ListFragment());
                     return true;
-                case R.id.navigation_dashboard:
-                    //changeFragment(new RegisterBookFragment());
-                    return true;
                 case R.id.logout:
                     deslogar();
                     return true;
