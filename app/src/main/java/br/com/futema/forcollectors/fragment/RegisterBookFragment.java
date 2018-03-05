@@ -34,6 +34,7 @@ public class RegisterBookFragment extends Fragment {
     private DatabaseReference dbReference;
     private FirebaseAuth auth;
     private String userID;
+    private String bookID = null;
 
     public RegisterBookFragment() {
     }
@@ -48,6 +49,12 @@ public class RegisterBookFragment extends Fragment {
         auth = FirebaseAuth.getInstance();
         userID = auth.getCurrentUser().getUid();
 
+        Bundle data = getActivity().getIntent().getExtras();
+
+        Book bookToEdit = null;
+        if(data != null){
+            bookToEdit = data.getParcelable("obj");
+        }
 
         View view = inflater.inflate(R.layout.fragment_register_book, container, false);
 
@@ -59,29 +66,56 @@ public class RegisterBookFragment extends Fragment {
         chkFavorito = view.findViewById(R.id.chkFavorito);
         btnSalvar = view.findViewById(R.id.btnSalvar);
 
-
+        if(bookToEdit != null){
+            etTitulo.setText(bookToEdit.getTitulo());
+            etAutor.setText(bookToEdit.getAutor());
+            etDescricao.setText(bookToEdit.getDescricao());
+            chkLido.setChecked(bookToEdit.getLido());
+            chkQuero.setChecked(bookToEdit.getWishList());
+            chkFavorito.setChecked(bookToEdit.getFavorito());
+            bookID = bookToEdit.getId();
+        }
 
 
         btnSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String id = dbReference.push().getKey();
+                String titulo = etTitulo.getText().toString();
+                String autor = etAutor.getText().toString();
+                String descricao = etDescricao.getText().toString();
 
-                Book livro = new Book();
-                livro.setId(id);
-                livro.setUserId(userID);
-                livro.setTitulo(etTitulo.getText().toString());
-                livro.setAutor(etAutor.getText().toString());
-                livro.setDescricao(etDescricao.getText().toString());
-                livro.setLido(chkLido.isChecked());
-                livro.setFavorito(chkFavorito.isChecked());
-                livro.setWishList(chkQuero.isChecked());
+                if(titulo == null || titulo.isEmpty()){
+                    Toast.makeText(getActivity(), "O titulo deve ser preenchido", Toast.LENGTH_SHORT).show();
+                }else if(autor == null || autor.isEmpty()){
+                    Toast.makeText(getActivity(), "O autor deve ser preenchido", Toast.LENGTH_SHORT).show();
+                }else if(descricao == null || descricao.isEmpty()){
+                    Toast.makeText(getActivity(), "A descrição deve ser preenchida", Toast.LENGTH_SHORT).show();
+                }else {
+                    String id = null;
+                    if(bookID != null){
+                        id = bookID;
+                    }else {
+                        id = dbReference.push().getKey();
+                    }
 
-                dbReference.child(id).setValue(livro);
 
-                Toast.makeText(getActivity(), "Livro salvo com sucesso", Toast.LENGTH_SHORT).show();
+                    Book livro = new Book();
+                    livro.setId(id);
+                    livro.setUserId(userID);
+                    livro.setTitulo(etTitulo.getText().toString());
+                    livro.setAutor(etAutor.getText().toString());
+                    livro.setDescricao(etDescricao.getText().toString());
+                    livro.setLido(chkLido.isChecked());
+                    livro.setFavorito(chkFavorito.isChecked());
+                    livro.setWishList(chkQuero.isChecked());
 
-                clearFields();
+                    dbReference.child(id).setValue(livro);
+
+                    Toast.makeText(getActivity(), "Livro salvo com sucesso", Toast.LENGTH_SHORT).show();
+
+                    clearFields();
+                    changeFragment(new ListFragment());
+                }
 
             }
         });
@@ -96,6 +130,14 @@ public class RegisterBookFragment extends Fragment {
         chkLido.setChecked(false);
         chkQuero.setChecked(false);
         chkFavorito.setChecked(false);
+    }
+
+    private void changeFragment(Fragment fragment){
+        Intent i = new Intent(getActivity(), MainActivity.class);
+        i.putExtra("fragment", "listBooks");
+        startActivity(i);
+        getActivity().finish();
+
     }
 
 }
